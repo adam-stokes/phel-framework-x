@@ -6,4 +6,5 @@
 
 (php/-> site-app (get "/" (fn [] (php/:: Response (plaintext "Hello There")))))
 
-(php/-> site-app (run))
+(when-not *compile-mode*
+    (php/-> site-app (run)))
