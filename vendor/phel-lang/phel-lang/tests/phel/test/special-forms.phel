@@ -1,5 +1,0 @@
-(ns phel-test\test\special-forms
-  (:require phel\test :refer [deftest is]))
-
-(deftest test-set-object-property
-  (is (= "foo" (php/-> (php/oset (php/-> (php/new \stdclass) name) "foo") name)) "set value to stdclass"))

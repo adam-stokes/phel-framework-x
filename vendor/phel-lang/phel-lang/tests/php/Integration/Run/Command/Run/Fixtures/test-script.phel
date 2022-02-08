@@ -1,3 +1,0 @@
-(ns test\test-script)
-
-(php/print "hello world\n")

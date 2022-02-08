@@ -1,4 +1,0 @@
---PHEL--
-(php/new \DateTimeImmutable)
---PHP--
-(new \DateTimeImmutable());

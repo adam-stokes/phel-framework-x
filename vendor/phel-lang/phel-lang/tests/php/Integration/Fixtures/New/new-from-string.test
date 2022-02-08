@@ -1,7 +1,0 @@
---PHEL--
-(php/new "\\DateTimeImmutable")
---PHP--
-(function() {
-  $target_1 = "\\DateTimeImmutable";
-  return new $target_1();
-})();

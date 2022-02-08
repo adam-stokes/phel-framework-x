@@ -1,4 +1,0 @@
---PHEL--
-(apply php/array [3])
---PHP--
-array(...((\Phel\Lang\TypeFactory::getInstance()->persistentVectorFromArray([3])) ?? []));

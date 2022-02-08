@@ -1,4 +1,0 @@
---PHEL--
-(php/substr "test" 1 2)
---PHP--
-substr("test", 1, 2);

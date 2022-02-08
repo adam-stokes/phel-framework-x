@@ -1,4 +1,0 @@
---PHEL--
-(php/new \DateTimeImmutable "2020-03-22" (php/new \DateTimeZone "Europe/Berlin"))
---PHP--
-(new \DateTimeImmutable("2020-03-22", (new \DateTimeZone("Europe/Berlin"))));
