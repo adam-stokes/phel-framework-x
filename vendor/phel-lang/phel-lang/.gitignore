@@ -1,0 +1,15 @@
+.idea/
+.phpbench/
+.vscode/
+data/
+out/
+PhelGenerated/
+var/
+vendor/
+
+!PhelGenerated/.gitkeep
+*.cache
+.php-cs-fixer.php
+.phel-repl-history
+local.phel
+phel-config-local.php

@@ -1,0 +1,26 @@
+--PHEL--
+(def x 1)
+(set-var x 2)
+--PHP--
+\Phel\Lang\Registry::getInstance()->addDefinition(
+  "user",
+  "x",
+  1,
+  \Phel\Lang\TypeFactory::getInstance()->persistentMapFromKVs(
+    \Phel\Lang\Keyword::create("start-location"), \Phel\Lang\TypeFactory::getInstance()->persistentMapFromKVs(
+      \Phel\Lang\Keyword::create("file"), "SetVar/set-var.test",
+      \Phel\Lang\Keyword::create("line"), 1,
+      \Phel\Lang\Keyword::create("column"), 0
+    ),
+    \Phel\Lang\Keyword::create("end-location"), \Phel\Lang\TypeFactory::getInstance()->persistentMapFromKVs(
+      \Phel\Lang\Keyword::create("file"), "SetVar/set-var.test",
+      \Phel\Lang\Keyword::create("line"), 1,
+      \Phel\Lang\Keyword::create("column"), 9
+    )
+  )
+);
+\Phel\Lang\Registry::getInstance()->addDefinition(
+  "user",
+  "x",
+  2
+);

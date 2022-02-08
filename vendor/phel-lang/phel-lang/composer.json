@@ -1,0 +1,72 @@
+{
+    "name": "phel-lang/phel-lang",
+    "type": "library",
+    "description": "Phel is a functional programming language that compiles to PHP",
+    "keywords": ["phel","lisp","functional","language"],
+    "homepage": "https://phel-lang.org/",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jens Haase",
+            "email": "je.haase@gmail.com"
+        }
+    ],
+    "require": {
+        "ext-json": "*",
+        "php": ">=8.0",
+        "gacela-project/gacela": "^0.11",
+        "symfony/console": "^5.4",
+        "phpunit/php-timer": "^5.0"
+    },
+    "require-dev": {
+        "ext-readline": "*",
+        "phpunit/phpunit": "^9.5",
+        "vimeo/psalm": "^4.16",
+        "symfony/var-dumper": "^5.4",
+        "friendsofphp/php-cs-fixer": "^3.5",
+        "phpmetrics/phpmetrics": "^2.7",
+        "phpbench/phpbench": "^1.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "Phel\\": "src/php/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "PhelTest\\": "tests/php"
+        }
+    },
+    "scripts": {
+        "test-all": [
+            "@test-quality",
+            "@test-compiler",
+            "@test-core"
+        ],
+        "test-quality": [
+            "@csrun",
+            "@psalm"
+        ],
+        "test-compiler": "./vendor/bin/phpunit --testsuite=integration,unit",
+        "test-compiler:coverage": "XDEBUG_MODE=coverage ./vendor/bin/phpunit --testsuite=integration,unit --coverage-html=data/coverage-html --coverage-xml=data/coverage-xml --log-junit=data/coverage-xml/junit.xml",
+        "test-core": "./phel test",
+        "psalm": "./vendor/bin/psalm --no-cache",
+        "csfix": "./vendor/bin/php-cs-fixer fix",
+        "csrun": "./vendor/bin/php-cs-fixer fix --dry-run",
+        "phpbench": "vendor/bin/phpbench run --report=aggregate --ansi",
+        "phpbench-base": "vendor/bin/phpbench run --tag=baseline --report=aggregate --progress=plain --ansi",
+        "phpbench-ref": "vendor/bin/phpbench run --ref=baseline --report=aggregate --progress=plain --ansi",
+        "metrics-report": "./vendor/bin/phpmetrics --report-html=data/metrics-report src/php"
+    },
+    "bin": [
+        "phel"
+    ],
+    "config": {
+        "platform": {
+            "php": "8.0"
+        },
+        "allow-plugins": {
+            "composer/package-versions-deprecated": true
+        }
+    }
+}

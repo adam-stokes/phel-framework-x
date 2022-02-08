@@ -1,0 +1,29 @@
+--PHEL--
+(def reduce (fn [f xs] (apply f xs)))
+
+(reduce php/array [1 2 3])
+--PHP--
+\Phel\Lang\Registry::getInstance()->addDefinition(
+  "user",
+  "reduce",
+  new class() extends \Phel\Lang\AbstractFn {
+    public const BOUND_TO = "user\\reduce";
+
+    public function __invoke($f, $xs) {
+      return ($f)(...(($xs) ?? []));
+    }
+  },
+  \Phel\Lang\TypeFactory::getInstance()->persistentMapFromKVs(
+    \Phel\Lang\Keyword::create("start-location"), \Phel\Lang\TypeFactory::getInstance()->persistentMapFromKVs(
+      \Phel\Lang\Keyword::create("file"), "Call/php-fn-reference.test",
+      \Phel\Lang\Keyword::create("line"), 1,
+      \Phel\Lang\Keyword::create("column"), 0
+    ),
+    \Phel\Lang\Keyword::create("end-location"), \Phel\Lang\TypeFactory::getInstance()->persistentMapFromKVs(
+      \Phel\Lang\Keyword::create("file"), "Call/php-fn-reference.test",
+      \Phel\Lang\Keyword::create("line"), 1,
+      \Phel\Lang\Keyword::create("column"), 37
+    )
+  )
+);
+(\Phel\Lang\Registry::getInstance()->getDefinition("user", "reduce"))((function(...$args) { return array(...$args);}), \Phel\Lang\TypeFactory::getInstance()->persistentVectorFromArray([1, 2, 3]));

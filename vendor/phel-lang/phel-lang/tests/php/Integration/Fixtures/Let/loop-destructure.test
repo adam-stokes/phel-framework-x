@@ -1,0 +1,42 @@
+--PHEL--
+(ns test
+  (:use \Phel\Lang\Nil))
+
+(loop [[x & xs] [1 2 3 4]
+       sum 0]
+  (if x
+    (if (php/== x nil) sum (recur xs (php/+ sum x)))))
+--PHP--
+namespace test;
+require_once __DIR__ . '/phel/core.php';
+\Phel\Lang\Registry::getInstance()->addDefinition(
+  "phel\\core",
+  "*ns*",
+  "test"
+);
+$__phel_1_2 = \Phel\Lang\TypeFactory::getInstance()->persistentVectorFromArray([1, 2, 3, 4]);
+$sum_3 = 0;
+while (true) {
+  $__phel_4_8 = $__phel_1_2;
+  $__phel_5_9 = (\Phel\Lang\Registry::getInstance()->getDefinition("phel\\core", "first"))($__phel_4_8);
+  $__phel_6_10 = (\Phel\Lang\Registry::getInstance()->getDefinition("phel\\core", "next"))($__phel_4_8);
+  $x_11 = $__phel_5_9;
+  $__phel_7_12 = $__phel_6_10;
+  $xs_13 = $__phel_7_12;
+  if (\Phel\Lang\Truthy::isTruthy($x_11)) {
+    if (\Phel\Lang\Truthy::isTruthy(($x_11 == null))) {
+      $sum_3;
+    } else {
+      $__phel_14 = $xs_13;
+      $__phel_15 = ($sum_3 + $x_11);
+      $__phel_1_2 = $__phel_14;
+      $sum_3 = $__phel_15;
+      continue;
+
+    }
+
+  } else {
+
+  }
+  break;
+}

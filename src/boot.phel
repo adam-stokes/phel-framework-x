@@ -1,0 +1,9 @@
+(ns app\boot
+    (:use FrameworkX\App)
+    (:use React\Http\Message\Response))
+
+(def site-app (php/new App))
+
+(php/-> site-app (get "/" (fn [] (php/:: Response (plaintext "Hello There")))))
+
+(php/-> site-app (run))

@@ -1,0 +1,15 @@
+{
+    "name": "adam-stokes/phel-example-1",
+    "type": "project",
+    "license": "Apache-2",
+    "authors": [
+        {
+            "name": "Adam Stokes",
+            "email": "51892+adam-stokes@users.noreply.github.com"
+        }
+    ],
+    "require": {
+        "phel-lang/phel-lang": "^0.6.0",
+        "clue/framework-x": "dev-main"
+    }
+}
