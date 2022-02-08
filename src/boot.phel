@@ -1,10 +1,13 @@
 (ns app\boot
-    (:use FrameworkX\App)
-    (:use React\Http\Message\Response))
+  (:use FrameworkX\App)
+  (:use React\Http\Message\Response))
 
 (def site-app (php/new App))
 
 (php/-> site-app (get "/" (fn [] (php/:: Response (plaintext "Hello There")))))
 
+(php/-> site-app (get "/hello/{name}" (fn [req]
+                                        (php/:: Response (plaintext (str "Hello " (php/-> req (getAttribute "name")) "!"))))))
+
 (when-not *compile-mode*
-    (php/-> site-app (run)))
+  (php/-> site-app (run)))
